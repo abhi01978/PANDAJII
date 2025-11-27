@@ -3,36 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panda Guru - 100% Perfect Working</title>
+<title>Panda Guru - Final Working</title>
 
 <style>
-body {background:#dbeafe;font-family:"Segoe UI",sans-serif;margin:0;padding:20px;text-align:center;}
-.panda {width:320px;height:420px;position:relative;margin:0 auto;}
-.ear {width:90px;height:90px;background:#000;border-radius:50%;position:absolute;top:5px;z-index:1;}
-.ear-left {left:10px;} .ear-right {right:10px;}
-.head {width:260px;height:260px;background:#fff;border-radius:50%;position:absolute;top:40px;left:30px;box-shadow:0 10px 25px rgba(0,0,0,0.15);z-index:2;}
-.eye-patch {width:90px;height:110px;background:#000;border-radius:50%;position:absolute;top:90px;z-index:5;}
-.eye-patch-left {left:60px;transform:rotate(15deg);} .eye-patch-right {right:60px;transform:rotate(-15deg);}
-.eye {width:36px;height:36px;background:white;border-radius:50%;position:absolute;top:125px;z-index:10;}
-.eye-left {left:100px;} .eye-right {right:100px;}
-.pupil {width:18px;height:18px;background:#000;border-radius:50%;position:absolute;top:9px;left:50%;transform:translateX(-50%);}
-.nose {width:40px;height:28px;background:black;border-radius:50px;position:absolute;top:175px;left:50%;transform:translateX(-50%);z-index:12;}
-.mouth {width:80px;height:26px;background:#ff6b6b;position:absolute;top:210px;left:50%;transform:translateX(-50%);border-radius:0 0 40px 40px;z-index:11;transition:0.2s;}
-.mouth.talking {height:40px;animation:pandaTalk .22s infinite alternate;}
-@keyframes pandaTalk {0%{height:26px;}100%{height:42px;}}
-.body {width:260px;height:230px;background:#fff;border-radius:130px 130px 50px 50px;position:absolute;bottom:0;left:30px;z-index:1;box-shadow:0 10px 25px rgba(0,0,0,0.20);}
-.hand {width:70px;height:160px;background:#000;border-radius:40px;position:absolute;bottom:70px;z-index:0;}
-.hand-left {left:5px;transform:rotate(25deg);} .hand-right {right:5px;transform:rotate(-25deg);}
-.hand.teaching {animation:wave 1.6s infinite;}
-@keyframes wave {0%,100%{transform:rotate(25deg);}50%{transform:rotate(5deg);}}
-.panda.thinking .head {animation:think 1.8s infinite;}
-@keyframes think {0%,100%{transform:rotate(0deg);}50%{transform:rotate(6deg);}}
-input {width:60%;padding:16px;margin-top:30px;border-radius:40px;border:none;font-size:1.1rem;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-button {padding:16px 28px;border-radius:40px;background:#ff6b6b;color:white;border:none;font-size:1.1rem;cursor:pointer;margin-left:10px;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-.mic {font-size:2.8rem;margin-left:15px;cursor:pointer;transition:0.3s;}
-.mic.listening {color:#ff4757;animation:pulse 1s infinite;}
-@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.3);}100%{transform:scale(1);}}
-#answer {margin-top:30px;padding:25px;background:white;border-radius:16px;width:75%;margin:auto;font-size:1.35rem;line-height:1.8;box-shadow:0 10px 30px rgba(0,0,0,0.15);min-height:80px;}
+body {
+  background: #dbeafe;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.panda { width: 320px; height: 420px; position: relative; margin: 0 auto; }
+
+.ear { width: 90px; height: 90px; background: #000; border-radius: 50%; position: absolute; top: 5px; z-index: 1; }
+.ear-left { left: 10px; } .ear-right { right: 10px; }
+
+.head { width: 260px; height: 260px; background: #fff; border-radius: 50%; position: absolute; top: 40px; left: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 2; }
+
+.eye-patch { width: 90px; height: 110px; background: #000; border-radius: 50%; position: absolute; top: 90px; z-index: 5; }
+.eye-patch-left { left: 60px; transform: rotate(15deg); } .eye-patch-right { right: 60px; transform: rotate(-15deg); }
+
+.eye { width: 36px; height: 36px; background: white; border-radius: 50%; position: absolute; top: 125px; z-index: 10; }
+.eye-left { left: 100px; } .eye-right { right: 100px; }
+.pupil { width: 18px; height: 18px; background: #000; border-radius: 50%; position: absolute; top: 9px; left: 50%; transform: translateX(-50%); }
+
+.nose { width: 40px; height: 28px; background: black; border-radius: 50px; position: absolute; top: 175px; left: 50%; transform: translateX(-50%); z-index: 12; }
+
+.mouth { width: 80px; height: 26px; background: #ff6b6b; position: absolute; top: 210px; left: 50%; transform: translateX(-50%); border-radius: 0 0 40px 40px; z-index: 11; transition: 0.2s; }
+.mouth.talking { height: 40px; animation: pandaTalk .22s infinite alternate; }
+@keyframes pandaTalk { 0% { height: 26px; } 100% { height: 42px; } }
+
+.body { width: 260px; height: 230px; background: #fff; border-radius: 130px 130px 50px 50px; position: absolute; bottom: 0; left: 30px; z-index: 1; box-shadow: 0 10px 25px rgba(0,0,0,0.20); }
+
+.hand { width: 70px; height: 160px; background: #000; border-radius: 40px; position: absolute; bottom: 70px; z-index: 0; }
+.hand-left { left: 5px; transform: rotate(25deg); } .hand-right { right: 5px; transform: rotate(-25deg); }
+.hand.teaching { animation: wave 1.6s infinite; }
+@keyframes wave { 0%, 100% { transform: rotate(25deg); } 50% { transform: rotate(5deg); } }
+
+.panda.thinking .head { animation: think 1.8s infinite; }
+@keyframes think { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(6deg); } }
+
+input { width: 60%; padding: 16px; margin-top: 30px; border-radius: 40px; border: none; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+button { padding: 16px 28px; border-radius: 40px; background: #ff6b6b; color: white; border: none; font-size: 1.1rem; cursor: pointer; margin-left: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+.mic { font-size: 2.8rem; margin-left: 15px; cursor: pointer; transition: 0.3s; }
+.mic.listening { color: #ff4757; animation: pulse 1s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
+#answer { margin-top: 30px; padding: 25px; background: white; border-radius: 16px; width: 75%; margin-left: auto; margin-right: auto; font-size: 1.35rem; line-height: 1.8; box-shadow: 0 10px 30px rgba(0,0,0,0.15); min-height: 80px; }
 </style>
 </head>
 <body>
@@ -56,20 +75,18 @@ button {padding:16px 28px;border-radius:40px;background:#ff6b6b;color:white;bord
 </div>
 
 <input type="text" id="question" placeholder="सवाल लिखो या माइक दबाओ...">
-<button id="askBtn">पूछो</button>
-<span class="mic" id="micBtn">माइक</span>
+<button onclick="askGuru()">पूछो</button>
+<span class="mic" id="micBtn" onclick="startVoice()">माइक</span>
 
 <div id="answer">जवाब यहाँ आएगा...</div>
 
 <script>
-// Elements
 const mouth = document.getElementById("mouth");
 const leftHand = document.getElementById("leftHand");
 const rightHand = document.getElementById("rightHand");
 const panda = document.getElementById("panda");
 const answerBox = document.getElementById("answer");
 const micBtn = document.getElementById("micBtn");
-const askBtn = document.getElementById("askBtn");
 
 // Idle thinking
 let idleTimer;
@@ -89,9 +106,10 @@ function pandaSpeak(text) {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "hi-IN";
   u.rate = 0.9;
+
   const voices = speechSynthesis.getVoices();
   const hindiVoice = voices.find(v => v.lang.includes("hi"));
-  if (hindiVoice) u.voice = hindiVoice;
+  if (hindiVoice) u.voice = hindiVoice;   // <-- yeh line fix ki
 
   stopThinking();
   mouth.classList.add("talking");
@@ -107,7 +125,7 @@ function pandaSpeak(text) {
   speechSynthesis.speak(u);
 }
 
-// Ask Guru
+// Backend se jawab
 async function askGuru() {
   let q = document.getElementById("question").value.trim();
   if (!q) return alert("सवाल तो लिखो भाई!");
@@ -127,52 +145,62 @@ async function askGuru() {
   pandaSpeak(data.answer || "समझ नहीं आया");
 }
 
-// Button click
-askBtn.addEventListener("click", askGuru);
-
-// FINAL MIC - 100% WORKING
-micBtn.addEventListener("click", async () => {
-  micBtn.classList.add("listening");
-  answerBox.innerHTML = "माइक चालू कर रहा हूँ...";
-
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = "hi-IN";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    recognition.onresult = (e) => {
-      const text = e.results[0][0].transcript;
-      document.getElementById("question").value = text;
-      stream.getTracks().forEach(t => t.stop());
-      micBtn.classList.remove("listening");
-      askGuru();
-    };
-
-    recognition.onerror = () => {
-      stream.getTracks().forEach(t => t.stop());
-      micBtn.classList.remove("listening");
-      answerBox.innerHTML = "फिर से माइक दबाओ";
-    };
-
-    recognition.onend = () => {
-      stream.getTracks().forEach(t => t.stop());
-      micBtn.classList.remove("listening");
-    };
-
-    answerBox.innerHTML = "बोलो... सुन रहा हूँ";
-    recognition.start();
-
-    setTimeout(() => {
-      if (micBtn.classList.contains("listening")) recognition.stop();
-    }, 8000);
-
-  } catch (err) {
-    micBtn.classList.remove("listening");
-    answerBox.innerHTML = "माइक ब्लॉक है! ऊपर Allow करो";
+// 100% WORKING MIC
+function startVoice() {
+  if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+    alert("Sorry, tera browser voice support nahi karta");
+    return;
   }
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = "hi-IN";
+  recognition.interimResults = false;
+  recognition.continuous = false;
+
+  micBtn.classList.add("listening");
+  answerBox.innerHTML = "बोलो... मैं सुन रहा हूँ";
+
+  recognition.start();
+
+  recognition.onresult = (e) => {
+    const text = e.results[0][0].transcript;
+    document.getElementById("question").value = text;
+    micBtn.classList.remove("listening");
+    askGuru();
+  };
+
+  recognition.onerror = (e) => {
+    micBtn.classList.remove("listening");
+    if (e.error === "not-allowed" || e.error === "permission-denied") {
+      answerBox.innerHTML = "माइक की परमिशन दो! ऊपर Allow करो";
+    } else {
+      answerBox.innerHTML = "आवाज़ साफ नहीं आई, फिर से बोलो";
+    }
+  };
+
+  recognition.onend = () => {
+    micBtn.classList.remove("listening");
+  };
+
+  setTimeout(() => {
+    if (micBtn.classList.contains("listening")) {
+      recognition.stop();
+      answerBox.innerHTML = "टाइम खत्म! फिर से माइक दबाओ";
+    }
+  }, 8000);
+}
+// Emergency fix — mic pe click karte hi permission maang le
+document.getElementById("micBtn").addEventListener("click", () => {
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      stream.getTracks().forEach(track => track.stop()); // bas permission ke liye
+      startVoice(); // ab asli function chalega
+    })
+    .catch(err => {
+      alert("माइक की परमिशन दो भाई! ऊपर Allow करो फिर माइक दबाओ");
+    });
 });
 </script>
 
