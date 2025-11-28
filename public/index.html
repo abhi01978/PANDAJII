@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panda Guru - Final Working</title>
+<title>Panda Guru - Ultimate Version</title>
 
 <style>
 body {
@@ -16,37 +16,94 @@ body {
 
 .panda { width: 320px; height: 420px; position: relative; margin: 0 auto; }
 
+/* ------------------------------------
+           Basic Panda Body
+-------------------------------------*/
 .ear { width: 90px; height: 90px; background: #000; border-radius: 50%; position: absolute; top: 5px; z-index: 1; }
 .ear-left { left: 10px; } .ear-right { right: 10px; }
 
 .head { width: 260px; height: 260px; background: #fff; border-radius: 50%; position: absolute; top: 40px; left: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 2; }
 
 .eye-patch { width: 90px; height: 110px; background: #000; border-radius: 50%; position: absolute; top: 90px; z-index: 5; }
-.eye-patch-left { left: 60px; transform: rotate(15deg); } .eye-patch-right { right: 60px; transform: rotate(-15deg); }
+.eye-patch-left { left: 60px; transform: rotate(15deg); } 
+.eye-patch-right { right: 60px; transform: rotate(-15deg); }
 
-.eye { width: 36px; height: 36px; background: white; border-radius: 50%; position: absolute; top: 125px; z-index: 10; }
+.eye { width: 36px; height: 36px; background: white; border-radius: 50%; position: absolute; top: 125px; z-index: 10; transition: 0.2s; }
 .eye-left { left: 100px; } .eye-right { right: 100px; }
 .pupil { width: 18px; height: 18px; background: #000; border-radius: 50%; position: absolute; top: 9px; left: 50%; transform: translateX(-50%); }
 
 .nose { width: 40px; height: 28px; background: black; border-radius: 50px; position: absolute; top: 175px; left: 50%; transform: translateX(-50%); z-index: 12; }
 
+/* MOUTH */
 .mouth { width: 80px; height: 26px; background: #ff6b6b; position: absolute; top: 210px; left: 50%; transform: translateX(-50%); border-radius: 0 0 40px 40px; z-index: 11; transition: 0.2s; }
 .mouth.talking { height: 40px; animation: pandaTalk .22s infinite alternate; }
 @keyframes pandaTalk { 0% { height: 26px; } 100% { height: 42px; } }
 
+/* BODY */
 .body { width: 260px; height: 230px; background: #fff; border-radius: 130px 130px 50px 50px; position: absolute; bottom: 0; left: 30px; z-index: 1; box-shadow: 0 10px 25px rgba(0,0,0,0.20); }
 
 .hand { width: 70px; height: 160px; background: #000; border-radius: 40px; position: absolute; bottom: 70px; z-index: 0; }
-.hand-left { left: 5px; transform: rotate(25deg); } .hand-right { right: 5px; transform: rotate(-25deg); }
+.hand-left { left: 5px; transform: rotate(25deg); } 
+.hand-right { right: 5px; transform: rotate(-25deg); }
 .hand.teaching { animation: wave 1.6s infinite; }
 @keyframes wave { 0%, 100% { transform: rotate(25deg); } 50% { transform: rotate(5deg); } }
 
+/* ------------------------------------
+           ADVANCED ANIMATIONS
+-------------------------------------*/
+
+/* BLINK */
+.blink .eye { height: 5px; }
+.blink .pupil { display: none; }
+
+/* EYE ROTATION */
+.eyes-rotate .pupil { animation: rotateEye 1.4s infinite linear; }
+@keyframes rotateEye { 0% { transform: translateX(-50%) rotate(0deg); } 100% { transform: translateX(-50%) rotate(360deg); } }
+
+/* SHOCK BIG EYES */
+.shock .eye { width: 60px; height: 60px; }
+.shock .mouth { height: 60px !important; background: #ff4343; }
+
+/* TEARS */
+.tears::after, .tears::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 45px;
+  background: rgba(0,150,255,0.6);
+  border-radius: 20px;
+  top: 150px;
+}
+.tears::after { left: 90px; }
+.tears::before { right: 90px; }
+
+/* LOVE MODE */
+.love::after {
+  content: "❤️";
+  position: absolute;
+  font-size: 60px;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: lovePop 1s infinite;
+}
+@keyframes lovePop {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.5); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* THINKING MODE */
 .panda.thinking .head { animation: think 1.8s infinite; }
 @keyframes think { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(6deg); } }
 
+/* ------------------------------------
+              UI
+-------------------------------------*/
 input { width: 60%; padding: 16px; margin-top: 30px; border-radius: 40px; border: none; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 button { padding: 16px 28px; border-radius: 40px; background: #ff6b6b; color: white; border: none; font-size: 1.1rem; cursor: pointer; margin-left: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
+/* MIC */
 .mic { font-size: 2.8rem; margin-left: 15px; cursor: pointer; transition: 0.3s; }
 .mic.listening { color: #ff4757; animation: pulse 1s infinite; }
 @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
@@ -63,20 +120,25 @@ button { padding: 16px 28px; border-radius: 40px; background: #ff6b6b; color: wh
   <div class="ear ear-left"></div>
   <div class="ear ear-right"></div>
   <div class="head"></div>
+
   <div class="eye-patch eye-patch-left"></div>
   <div class="eye-patch eye-patch-right"></div>
+
   <div class="eye eye-left"><div class="pupil"></div></div>
   <div class="eye eye-right"><div class="pupil"></div></div>
+
   <div class="nose"></div>
   <div class="mouth" id="mouth"></div>
+
   <div class="body"></div>
+
   <div class="hand hand-left" id="leftHand"></div>
   <div class="hand hand-right" id="rightHand"></div>
 </div>
 
 <input type="text" id="question" placeholder="सवाल लिखो या माइक दबाओ...">
 <button onclick="askGuru()">पूछो</button>
-<span class="mic" id="micBtn" onclick="startVoice()">माइक</span>
+<span class="mic" id="micBtn">🎤</span>
 
 <div id="answer">जवाब यहाँ आएगा...</div>
 
@@ -88,120 +150,106 @@ const panda = document.getElementById("panda");
 const answerBox = document.getElementById("answer");
 const micBtn = document.getElementById("micBtn");
 
-// Idle thinking
+// ------------------ AUTO BLINK ------------------
+setInterval(() => { panda.classList.add("blink"); setTimeout(() => panda.classList.remove("blink"), 180); }, 4000);
+
+// ------------------ IDLE THINKING ------------------
 let idleTimer;
 function startThinking() { panda.classList.add("thinking"); }
 function stopThinking() { panda.classList.remove("thinking"); }
-function resetIdle() {
-  clearTimeout(idleTimer);
-  stopThinking();
-  idleTimer = setTimeout(startThinking, 3000);
-}
+function resetIdle() { clearTimeout(idleTimer); stopThinking(); idleTimer = setTimeout(startThinking, 3000); }
 document.addEventListener("click", resetIdle);
 document.addEventListener("keydown", resetIdle);
 resetIdle();
 
-// Panda bolega
+// ------------------ PANDA SPEAK ------------------
 function pandaSpeak(text) {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "hi-IN";
+  u.pitch = 0.6;
   u.rate = 0.9;
-
   const voices = speechSynthesis.getVoices();
   const hindiVoice = voices.find(v => v.lang.includes("hi"));
-  if (hindiVoice) u.voice = hindiVoice;   // <-- yeh line fix ki
+  if (hindiVoice) u.voice = hindiVoice;
 
   stopThinking();
   mouth.classList.add("talking");
   leftHand.classList.add("teaching");
   rightHand.classList.add("teaching");
 
-  u.onend = () => {
-    mouth.classList.remove("talking");
-    leftHand.classList.remove("teaching");
-    rightHand.classList.remove("teaching");
-    resetIdle();
-  };
+  u.onend = () => { mouth.classList.remove("talking"); leftHand.classList.remove("teaching"); rightHand.classList.remove("teaching"); resetIdle(); };
   speechSynthesis.speak(u);
 }
 
-// Backend se jawab
+// ------------------ AUTO ANIMATIONS ------------------
+function applyAutoEffects(q) {
+  if (/love|gf|crush|romantic|dil|❤️/i.test(q)) { panda.classList.add("love"); setTimeout(() => panda.classList.remove("love"), 2500); }
+  if (/shock|thappad|slap|fight|gussa|maar/i.test(q)) { panda.classList.add("shock"); setTimeout(() => panda.classList.remove("shock"), 1600); }
+  if (/sad|cry|rona|hurt|dukhi/i.test(q)) { panda.classList.add("tears"); setTimeout(() => panda.classList.remove("tears"), 2300); }
+  if (/socho|think|kya|confuse/i.test(q)) { panda.classList.add("eyes-rotate"); setTimeout(() => panda.classList.remove("eyes-rotate"), 2000); }
+}
+
+// ------------------ FUNNY MESSAGES ------------------
+const funnyReplies = [
+  "Bhai padh le, time pass mat kar 😜",
+  "Arey bhai, homework kar liya ya abhi bhi chill kar raha hai? 😂",
+  "Guru kehta hai: thoda serious ho ja yaar 😎",
+  "Bhai, chai pi ke pucho fir jawab milega ☕",
+  "Arre samajh gaya, par ye thoda extra funny tha 😅",
+  "Bhai, raat ko na kare to din me pakka samajh aayega 😏",
+  "Guru bolta hai: thoda dhyaan se padhna, warna main bhi chill karunga 😜"
+];
+
+// ------------------ ASK GURU ------------------
 async function askGuru() {
   let q = document.getElementById("question").value.trim();
   if (!q) return alert("सवाल तो लिखो भाई!");
 
+  applyAutoEffects(q);
   startThinking();
   answerBox.innerHTML = "सोच रहा हूँ...";
 
-  const res = await fetch("/ask", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question: q })
-  });
+  const funnyKeywords = /time pass|bored|mazaak|joke|funny|kya kar raha/i;
+  let answerText;
 
-  const data = await res.json();
-  stopThinking();
-  answerBox.innerHTML = (data.answer || "समझ नहीं आया").replace(/\n/g, "<br>");
-  pandaSpeak(data.answer || "समझ नहीं आया");
-}
-
-// 100% WORKING MIC
-function startVoice() {
-  if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
-    alert("Sorry, tera browser voice support nahi karta");
-    return;
+  if(funnyKeywords.test(q)) {
+    answerText = funnyReplies[Math.floor(Math.random() * funnyReplies.length)];
+  } else {
+    const res = await fetch("/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q }) });
+    const data = await res.json();
+    answerText = data.answer || "समझ नहीं आया";
   }
 
+  stopThinking();
+  answerBox.innerHTML = answerText.replace(/\n/g, "<br>");
+  pandaSpeak(answerText);
+}
+
+// ------------------ MIC SYSTEM ------------------
+micBtn.addEventListener("click", () => {
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => { stream.getTracks().forEach(track => track.stop()); startVoice(); })
+    .catch(err => { alert("माइक की परमिशन दो भाई!"); });
+});
+
+function startVoice() {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
-
   recognition.lang = "hi-IN";
-  recognition.interimResults = false;
-  recognition.continuous = false;
 
   micBtn.classList.add("listening");
   answerBox.innerHTML = "बोलो... मैं सुन रहा हूँ";
 
   recognition.start();
-
   recognition.onresult = (e) => {
     const text = e.results[0][0].transcript;
     document.getElementById("question").value = text;
     micBtn.classList.remove("listening");
     askGuru();
   };
-
-  recognition.onerror = (e) => {
-    micBtn.classList.remove("listening");
-    if (e.error === "not-allowed" || e.error === "permission-denied") {
-      answerBox.innerHTML = "माइक की परमिशन दो! ऊपर Allow करो";
-    } else {
-      answerBox.innerHTML = "आवाज़ साफ नहीं आई, फिर से बोलो";
-    }
-  };
-
-  recognition.onend = () => {
-    micBtn.classList.remove("listening");
-  };
-
-  setTimeout(() => {
-    if (micBtn.classList.contains("listening")) {
-      recognition.stop();
-      answerBox.innerHTML = "टाइम खत्म! फिर से माइक दबाओ";
-    }
-  }, 8000);
+  recognition.onerror = () => { micBtn.classList.remove("listening"); answerBox.innerHTML = "आवाज़ साफ नहीं आई"; };
+  recognition.onend = () => { micBtn.classList.remove("listening"); };
 }
-// Emergency fix — mic pe click karte hi permission maang le
-document.getElementById("micBtn").addEventListener("click", () => {
-  navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-      stream.getTracks().forEach(track => track.stop()); // bas permission ke liye
-      startVoice(); // ab asli function chalega
-    })
-    .catch(err => {
-      alert("माइक की परमिशन दो भाई! ऊपर Allow करो फिर माइक दबाओ");
-    });
-});
 </script>
 
 </body>
